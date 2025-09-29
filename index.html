@@ -1,0 +1,268 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Cattle &amp; Buffalo Breed Recognition
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: 'Roboto', sans-serif;
+    }
+  </style>
+ </head>
+ <body class="bg-gray-50 min-h-screen flex flex-col">
+  <header class="bg-green-700 text-white shadow-md">
+   <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+     <img alt="Icon showing a stylized cattle head in green and white colors" class="w-12 h-12 rounded-full" height="48" src="https://storage.googleapis.com/a1aa/image/836004e9-d9e2-4910-caa2-33ed18eebd3c.jpg" width="48"/>
+     <h1 class="text-2xl font-bold tracking-wide">
+      Breed Recognizer
+     </h1>
+    </div>
+    <nav class="hidden md:flex space-x-8 font-semibold text-green-200">
+     <a class="hover:text-white transition" href="#upload">
+      Upload Image
+     </a>
+     <a class="hover:text-white transition" href="#breeds">
+      Breeds Info
+     </a>
+     <a class="hover:text-white transition" href="#about">
+      About
+     </a>
+    </nav>
+    <button aria-label="Toggle menu" class="md:hidden text-green-200 hover:text-white focus:outline-none" id="menu-btn">
+     <i class="fas fa-bars fa-lg">
+     </i>
+    </button>
+   </div>
+   <nav class="md:hidden bg-green-600 text-green-100 px-4 py-3 space-y-2 hidden" id="mobile-menu">
+    <a class="block hover:text-white font-semibold" href="#upload">
+     Upload Image
+    </a>
+    <a class="block hover:text-white font-semibold" href="#breeds">
+     Breeds Info
+    </a>
+    <a class="block hover:text-white font-semibold" href="#about">
+     About
+    </a>
+   </nav>
+  </header>
+  <main class="flex-grow container mx-auto px-4 py-10">
+   <section class="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-8" id="upload">
+    <h2 class="text-3xl font-bold text-green-800 mb-6 text-center">
+     Upload Image for Breed Recognition
+    </h2>
+    <form aria-label="Image upload form for cattle and buffalo breed recognition" class="flex flex-col items-center space-y-6" enctype="multipart/form-data" id="upload-form">
+     <label class="w-full flex flex-col items-center px-4 py-6 bg-green-100 border-2 border-dashed border-green-400 rounded-lg cursor-pointer hover:bg-green-200 transition" for="image-upload">
+      <i class="fas fa-cloud-upload-alt fa-3x text-green-600 mb-3">
+      </i>
+      <span class="text-green-700 font-semibold">
+       Click to select or drag and drop an image
+      </span>
+      <input accept="image/*" aria-required="true" class="hidden" id="image-upload" name="image-upload" required="" type="file"/>
+     </label>
+     <p class="text-sm text-gray-600">
+      Supported formats: JPG, PNG, GIF. Max size: 5MB.
+     </p>
+     <button aria-label="Submit image for breed recognition" class="bg-green-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-800 transition w-full sm:w-auto" type="submit">
+      Recognize Breed
+     </button>
+    </form>
+    <div aria-live="polite" class="mt-8 p-6 bg-green-50 border border-green-300 rounded-lg hidden" id="result">
+     <h3 class="text-xl font-bold text-green-900 mb-4">
+      Recognition Result
+     </h3>
+     <div class="flex flex-col items-center space-y-4">
+      <img alt="Uploaded cattle or buffalo image for breed recognition" class="max-w-xs rounded-lg shadow-md" id="result-image" src=""/>
+      <p class="text-green-800 text-center text-lg font-semibold" id="result-text">
+      </p>
+     </div>
+    </div>
+   </section>
+   <section aria-label="Information about cattle and buffalo breeds" class="max-w-6xl mx-auto mt-16 bg-white rounded-lg shadow-lg p-8" id="breeds">
+    <h2 class="text-3xl font-bold text-green-800 mb-8 text-center">
+     Common Cattle &amp; Buffalo Breeds
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+     <article class="bg-green-50 rounded-lg shadow p-5 flex flex-col items-center text-center">
+      <img alt="Gir cattle breed standing in a green pasture with a clear blue sky" class="rounded-lg mb-4 w-full object-cover h-40" height="200" src="https://storage.googleapis.com/a1aa/image/5abd3921-0331-47f6-561d-b03f27233e27.jpg" width="300"/>
+      <h3 class="text-xl font-semibold text-green-900 mb-2">
+       Gir
+      </h3>
+      <p class="text-green-800 text-sm">
+       Gir is a famous Indian breed known for its high milk production and distinctive curved horns.
+      </p>
+     </article>
+     <article class="bg-green-50 rounded-lg shadow p-5 flex flex-col items-center text-center">
+      <img alt="Murrah buffalo breed standing near a water body with lush green surroundings" class="rounded-lg mb-4 w-full object-cover h-40" height="200" src="https://storage.googleapis.com/a1aa/image/10ab2820-404a-4648-3cd4-eaccf632abec.jpg" width="300"/>
+      <h3 class="text-xl font-semibold text-green-900 mb-2">
+       Murrah
+      </h3>
+      <p class="text-green-800 text-sm">
+       Murrah is a high-yielding buffalo breed from India, known for its jet black color and curved horns.
+      </p>
+     </article>
+     <article class="bg-green-50 rounded-lg shadow p-5 flex flex-col items-center text-center">
+      <img alt="Sahiwal cattle breed grazing in a farm field with a bright sunny day" class="rounded-lg mb-4 w-full object-cover h-40" height="200" src="https://storage.googleapis.com/a1aa/image/ee52c626-cec3-4566-1c2e-a7bd6a6346cb.jpg" width="300"/>
+      <h3 class="text-xl font-semibold text-green-900 mb-2">
+       Sahiwal
+      </h3>
+      <p class="text-green-800 text-sm">
+       Sahiwal is a well-known dairy cattle breed from Pakistan and India, recognized for its reddish-brown coat.
+      </p>
+     </article>
+     <article class="bg-green-50 rounded-lg shadow p-5 flex flex-col items-center text-center">
+      <img alt="Jersey cattle breed standing in a farmyard with a light brown coat and white markings" class="rounded-lg mb-4 w-full object-cover h-40" height="200" src="https://storage.googleapis.com/a1aa/image/bd0dead8-fc80-45d3-c67d-04f259d1b36c.jpg" width="300"/>
+      <h3 class="text-xl font-semibold text-green-900 mb-2">
+       Jersey
+      </h3>
+      <p class="text-green-800 text-sm">
+       Jersey cattle are small-sized dairy cows with a light brown coat, known for rich milk with high butterfat.
+      </p>
+     </article>
+     <article class="bg-green-50 rounded-lg shadow p-5 flex flex-col items-center text-center">
+      <img alt="Jaffarabadi buffalo breed standing in a muddy field with large curved horns" class="rounded-lg mb-4 w-full object-cover h-40" height="200" src="https://storage.googleapis.com/a1aa/image/3a7b7762-32b8-4b2a-1026-fda70d8510db.jpg" width="300"/>
+      <h3 class="text-xl font-semibold text-green-900 mb-2">
+       Jaffarabadi
+      </h3>
+      <p class="text-green-800 text-sm">
+       Jaffarabadi buffalo is a heavy breed from India, recognized by its large size and massive curved horns.
+      </p>
+     </article>
+     <article class="bg-green-50 rounded-lg shadow p-5 flex flex-col items-center text-center">
+      <img alt="Kankrej cattle breed standing in a dry field with a greyish coat and strong build" class="rounded-lg mb-4 w-full object-cover h-40" height="200" src="https://storage.googleapis.com/a1aa/image/22aea2b9-2184-44df-6dc6-19b9b73e529c.jpg" width="300"/>
+      <h3 class="text-xl font-semibold text-green-900 mb-2">
+       Kankrej
+      </h3>
+      <p class="text-green-800 text-sm">
+       Kankrej is a dual-purpose breed from India, known for drought resistance and good milk and draught power.
+      </p>
+     </article>
+    </div>
+   </section>
+   <section aria-label="About the breed recognition application" class="max-w-4xl mx-auto mt-16 bg-white rounded-lg shadow-lg p-8 text-green-900" id="about">
+    <h2 class="text-3xl font-bold mb-6 text-center">
+     About This Application
+    </h2>
+    <p class="mb-4 text-center text-lg leading-relaxed">
+     This application allows farmers, breeders, and enthusiasts to upload images of cattle or buffaloes to identify their breed using advanced image recognition technology. Recognizing the breed helps in better management, breeding decisions, and improving productivity.
+    </p>
+    <p class="mb-4 text-center text-lg leading-relaxed">
+     Simply upload a clear image of the animal, and the system will analyze the features to provide the most likely breed match. The breed information section provides details about common breeds to help you learn more.
+    </p>
+    <p class="text-center text-green-700 font-semibold">
+     Developed with Tailwind CSS, Font Awesome, and modern web technologies for a responsive and user-friendly experience.
+    </p>
+   </section>
+  </main>
+  <footer class="bg-green-700 text-green-100 py-6 mt-16">
+   <div class="container mx-auto px-4 text-center text-sm">
+    © 2024 Breed Recognizer. All rights reserved.
+   </div>
+  </footer>
+  <script>
+   const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    const uploadForm = document.getElementById('upload-form');
+    const imageUpload = document.getElementById('image-upload');
+    const resultSection = document.getElementById('result');
+    const resultImage = document.getElementById('result-image');
+    const resultText = document.getElementById('result-text');
+
+    // Dummy breed recognition logic for demonstration
+    // In real app, this would call an API or ML model
+    function recognizeBreed(imageFile) {
+      // For demo, randomly pick a breed from the list
+      const breeds = [
+        {
+          name: 'Gir',
+          description:
+            'Gir is a famous Indian breed known for its high milk production and distinctive curved horns.',
+          imageAlt: 'Gir cattle breed standing in a green pasture with a clear blue sky',
+          imageSrc: 'https://placehold.co/300x200/png?text=Gir+Cattle+Breed',
+        },
+        {
+          name: 'Murrah',
+          description:
+            'Murrah is a high-yielding buffalo breed from India, known for its jet black color and curved horns.',
+          imageAlt: 'Murrah buffalo breed standing near a water body with lush green surroundings',
+          imageSrc: 'https://placehold.co/300x200/png?text=Murrah+Buffalo+Breed',
+        },
+        {
+          name: 'Sahiwal',
+          description:
+            'Sahiwal is a well-known dairy cattle breed from Pakistan and India, recognized for its reddish-brown coat.',
+          imageAlt: 'Sahiwal cattle breed grazing in a farm field with a bright sunny day',
+          imageSrc: 'https://placehold.co/300x200/png?text=Sahiwal+Cattle+Breed',
+        },
+        {
+          name: 'Jersey',
+          description:
+            'Jersey cattle are small-sized dairy cows with a light brown coat, known for rich milk with high butterfat.',
+          imageAlt: 'Jersey cattle breed standing in a farmyard with a light brown coat and white markings',
+          imageSrc: 'https://placehold.co/300x200/png?text=Jersey+Cattle+Breed',
+        },
+        {
+          name: 'Jaffarabadi',
+          description:
+            'Jaffarabadi buffalo is a heavy breed from India, recognized by its large size and massive curved horns.',
+          imageAlt: 'Jaffarabadi buffalo breed standing in a muddy field with large curved horns',
+          imageSrc: 'https://placehold.co/300x200/png?text=Jaffarabadi+Buffalo+Breed',
+        },
+        {
+          name: 'Kankrej',
+          description:
+            'Kankrej is a dual-purpose breed from India, known for drought resistance and good milk and draught power.',
+          imageAlt: 'Kankrej cattle breed standing in a dry field with a greyish coat and strong build',
+          imageSrc: 'https://placehold.co/300x200/png?text=Kankrej+Cattle+Breed',
+        },
+      ];
+
+      // Randomly select a breed for demo
+      const randomIndex = Math.floor(Math.random() * breeds.length);
+      return breeds[randomIndex];
+    }
+
+    uploadForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const file = imageUpload.files[0];
+      if (!file) {
+        alert('Please select an image file.');
+        return;
+      }
+
+      if (!file.type.startsWith('image/')) {
+        alert('Selected file is not an image.');
+        return;
+      }
+
+      if (file.size > 5 * 1024 * 1024) {
+        alert('File size exceeds 5MB limit.');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        resultImage.src = event.target.result;
+        resultImage.alt = `Uploaded image of cattle or buffalo for breed recognition`;
+        const breed = recognizeBreed(file);
+        resultText.innerHTML = `<strong>${breed.name}</strong>: ${breed.description}`;
+        resultSection.classList.remove('hidden');
+        resultSection.focus();
+      };
+      reader.readAsDataURL(file);
+    });
+  </script>
+ </body>
+</html>
